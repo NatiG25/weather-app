@@ -4,7 +4,7 @@ import Inputs from "./components/Inputs";
 import TimeAndLocation from "./components/TimeAndLocation";
 import TemperatureAndDetails from "./components/TemperatureAndDetails";
 import Forecast from "./components/Forecast";
-import getFormattedCurrentWeather, { getCurrentWeather } from "./weatherService";
+import getFormattedCurrentWeather from "./weatherService";
 
 function App() {
 
