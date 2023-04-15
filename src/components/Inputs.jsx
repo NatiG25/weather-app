@@ -1,22 +1,22 @@
 import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
-import { FiNavigation } from "react-icons/fi";
+import { FaLocationArrow } from "react-icons/fa";
 
 function Inputs() {
   return (
     <div className="flex flex-row justify-center my-6">
-      <div className="flex flex-row w-3/4 items-center justify-center space-x-2">
+      <div className="flex flex-row items-center justify-center space-x-2">
         <input
           type="text"
           placeholder="Search for a city..."
-          className="text-xl font-light p-2 shadow-xl capitalize focus:outline-none placeholder:lowercase"
+          className="text-xl w-3/4 font-light p-2 shadow-xl capitalize focus:outline-none placeholder:lowercase"
         />
         <BiSearchAlt
-          size={42}
+          size={25}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
         />
-        <FiNavigation
-          size={42}
+        <FaLocationArrow
+          size={25}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
         />
       </div>
