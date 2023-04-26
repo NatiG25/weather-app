@@ -17,7 +17,7 @@ function Forecast({ title, weather: { hourly, daily } }) {
                 <div className="flex flex-col items-center justify-center">
                   <p className="font-light text-sm">{hour.title}</p>
                   <img src={iconUrlFromCode(hour.icon)} className="my-2 w-12" />
-                  <p className="font-medium">{hour.temp}</p>
+                  <p className="font-medium">{hour.temp.toFixed()}°</p>
                 </div>
               </>
             );
@@ -30,7 +30,7 @@ function Forecast({ title, weather: { hourly, daily } }) {
                 <div className="flex flex-col items-center justify-center">
                   <p className="font-light text-sm">{day.title}</p>
                   <img src={iconUrlFromCode(day.icon)} className="my-2 w-12" />
-                  <p className="font-medium">{day.temp}</p>
+                  <p className="font-medium">{day.temp.toFixed()}°</p>
                 </div>
               </>
             );
