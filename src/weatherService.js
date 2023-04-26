@@ -79,7 +79,7 @@ const getFormattedWeatherData = async (searchParams) => {
     units: searchParams.units,
   }).then(formatForcastWeather);
 
-  return { ...formattedCurrentWeather, ...formattedForcastWeather};
+  return { ...formattedCurrentWeather, ...formattedForcastWeather };
 };
 
 const formatLocalTime = (
@@ -90,4 +90,9 @@ const formatLocalTime = (
   return DateTime.fromSeconds(secs).setZone(timezone).toFormat(format);
 };
 
+const iconUrlFromCode = (code) =>
+  `https://openweathermap.org/img/wn/${code}@2x.png`;
+
 export default getFormattedWeatherData;
+
+export { formatLocalTime, iconUrlFromCode };
