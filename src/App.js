@@ -22,6 +22,8 @@ function App() {
     fetchWeather();
   }, [query, units]);
 
+  console.log(weather);
+
   return (
     <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
       <TopButtons />
@@ -29,11 +31,11 @@ function App() {
 
       {weather && (
         <>
-          <TimeAndLocation />
-          <TemperatureAndDetails />
+          <TimeAndLocation weather={weather} />
+          <TemperatureAndDetails weather={weather} />
 
-          <Forecast title={"Hourly Forecast"} />
-          <Forecast title={"Daily Forecast"} />
+          <Forecast title={"Hourly Forecast"} weather={weather} />
+          <Forecast title={"Daily Forecast"} weather={weather} />
         </>
       )}
     </div>
