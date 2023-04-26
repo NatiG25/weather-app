@@ -1,7 +1,7 @@
 import React from "react";
-import { BsFillCloudSleetFill } from "react-icons/bs";
+import { iconUrlFromCode } from "../weatherService";
 
-function Forecast({ title }) {
+function Forecast({ title, weather: { hourly, daily } }) {
   return (
     <div>
       <div className="flex justify-start items-center mt-6">
@@ -10,35 +10,31 @@ function Forecast({ title }) {
       <hr className="my-2" />
 
       <div className="flex justify-between items-center text-white">
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:30 PM</p>
-          <BsFillCloudSleetFill className="my-2 w-12" />
-          <p className="font-medium">22°</p>
-        </div>
+        {title === "Hourly Forecast" &&
+          hourly.map((hour) => {
+            return (
+              <>
+                <div className="flex flex-col items-center justify-center">
+                  <p className="font-light text-sm">{hour.title}</p>
+                  <img src={iconUrlFromCode(hour.icon)} className="my-2 w-12" />
+                  <p className="font-medium">{hour.temp}</p>
+                </div>
+              </>
+            );
+          })}
 
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:30 PM</p>
-          <BsFillCloudSleetFill className="my-2 w-12" />
-          <p className="font-medium">22°</p>
-        </div>
-
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:30 PM</p>
-          <BsFillCloudSleetFill className="my-2 w-12" />
-          <p className="font-medium">22°</p>
-        </div>
-
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:30 PM</p>
-          <BsFillCloudSleetFill className="my-2 w-12" />
-          <p className="font-medium">22°</p>
-        </div>
-
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-light text-sm">4:30 PM</p>
-          <BsFillCloudSleetFill className="my-2 w-12" />
-          <p className="font-medium">22°</p>
-        </div>
+        {title === "Daily Forecast" &&
+          daily.map((day) => {
+            return (
+              <>
+                <div className="flex flex-col items-center justify-center">
+                  <p className="font-light text-sm">{day.title}</p>
+                  <img src={iconUrlFromCode(day.icon)} className="my-2 w-12" />
+                  <p className="font-medium">{day.temp}</p>
+                </div>
+              </>
+            );
+          })}
       </div>
     </div>
   );
