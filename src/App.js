@@ -4,29 +4,38 @@ import Inputs from "./components/Inputs";
 import TimeAndLocation from "./components/TimeAndLocation";
 import TemperatureAndDetails from "./components/TemperatureAndDetails";
 import Forecast from "./components/Forecast";
-import getFormattedCurrentWeather from "./weatherService";
+import getFormattedWeatherData from "./weatherService";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [query, setQuery] = useState({q: 'berlin'});
+  const [units, setUnits] = useState("metric");
+  const [weather, setWeather] = useState(null);
 
-  const experiment = async () => {
-    const result = await getFormattedCurrentWeather({q: 'London'})
-    // const result2 = await getCurrentWeather('weather', {q: 'London'})
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getFormattedWeatherData({ ...query, units }).then((data) =>
+        setWeather(data)
+      );
+    };
 
-    console.log(result);
-  }
-
-  experiment();
+    fetchWeather();
+  }, [query, units]);
 
   return (
     <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
       <TopButtons />
       <Inputs />
 
-      <TimeAndLocation />
-      <TemperatureAndDetails />
+      {weather && (
+        <>
+          <TimeAndLocation />
+          <TemperatureAndDetails />
 
-      <Forecast title={'Hourly Forecast'} />
-      <Forecast title={'Monthly Forecast'} />
+          <Forecast title={"Hourly Forecast"} />
+          <Forecast title={"Daily Forecast"} />
+        </>
+      )}
     </div>
   );
 }
