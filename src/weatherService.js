@@ -56,7 +56,7 @@ const formatForcastWeather = (data) => {
   hourly = hourly.slice(1, 6).map((h) => {
     return {
       title: formatLocalTime(h.dt, timezone, "hh:mm a"),
-      temp: h.temp.day,
+      temp: h.temp,
       icon: h.weather[0].icon,
     };
   });
