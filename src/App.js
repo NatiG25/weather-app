@@ -8,7 +8,7 @@ import getFormattedWeatherData from "./weatherService";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [query, setQuery] = useState({q: 'berlin'});
+  const [query, setQuery] = useState({ q: "tokyo" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -34,8 +34,8 @@ function App() {
           <TimeAndLocation weather={weather} />
           <TemperatureAndDetails weather={weather} />
 
-          <Forecast title={"Hourly Forecast"} weather={weather} />
-          <Forecast title={"Daily Forecast"} weather={weather} />
+          <Forecast title={"Hourly Forecast"} items={weather.hourly} />
+          <Forecast title={"Daily Forecast"} items={weather.daily} />
         </>
       )}
     </div>

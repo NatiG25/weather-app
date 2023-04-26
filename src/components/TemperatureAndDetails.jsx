@@ -44,13 +44,13 @@ function TemperatureAndDetails({
           <div className="flex font-light text-sm items-center justify-center">
             <WiHumidity size={20} />
             Humidity:
-            <span className="font-medium ml-1">{humidity}%</span>
+            <span className="font-medium ml-1">{humidity.toFixed()}%</span>
           </div>
 
           <div className="flex font-light text-sm items-center justify-center">
             <RiWindyFill size={20} />
             Wind:
-            <span className="font-medium ml-1">{speed} km/h</span>
+            <span className="font-medium ml-1">{speed.toFixed()} km/h</span>
           </div>
         </div>
       </div>
@@ -70,13 +70,13 @@ function TemperatureAndDetails({
 
         <BiSun />
         <p className="font-light">
-          High: <span className="font-medium ml-1">{temp_max}°</span>
+          High: <span className="font-medium ml-1">{temp_max.toFixed()}°</span>
         </p>
         <p className="font-light">|</p>
 
         <BiSun />
         <p className="font-light">
-          Low: <span className="font-medium ml-1">{temp_min}°</span>
+          Low: <span className="font-medium ml-1">{temp_min.toFixed()}°</span>
         </p>
       </div>
     </div>
