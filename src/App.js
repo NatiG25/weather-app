@@ -30,8 +30,6 @@ function App() {
     fetchWeather();
   }, [query, units]);
 
-  console.log(weather);
-
   const formatBackground = () => {
     if (!weather) return "from-cyan-700 to-blue-700";
 
