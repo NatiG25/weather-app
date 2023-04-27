@@ -5,20 +5,27 @@ import { toast } from "react-toastify";
 
 function Inputs({ setQuery, units, setUnits }) {
   const [city, setCity] = useState();
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setCity(e.target.value);
   };
 
   const handleSearchClick = () => {
-    setQuery({ q: city });
+    if (city === "") {
+      return setMessage("Please add a city.");
+    } else {
+      setQuery({ q: city });
+      setCity("");
+      setMessage("");
+    }
   };
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {
-      toast.info("Fetching current user's location.")
+      toast.info("Fetching current user's location.");
       navigator.geolocation.getCurrentPosition((position) => {
-        toast.success("Location fetched!")
+        toast.success("Location fetched!");
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
 
@@ -45,6 +52,7 @@ function Inputs({ setQuery, units, setUnits }) {
           placeholder="Search for a city..."
           className="text-xl w-3/4 font-light p-2 shadow-xl capitalize focus:outline-none placeholder:lowercase"
         />
+        <span className="text-xs mt-1 font-medium text-red-400 ">{message}</span>
         <BiSearchAlt
           onClick={handleSearchClick}
           size={25}
