@@ -13,13 +13,18 @@ function Forecast({ title, items }) {
       <div className="flex justify-between items-center text-white">
         {items.map((item) => {
           return (
-            <>
-              <div key={uuid()} className="flex flex-col items-center justify-center">
-                <p className="font-light text-sm">{item.title}</p>
-                <img src={iconUrlFromCode(item.icon)} className="my-2 w-12" alt="Weather Icon" />
-                <p className="font-medium">{item.temp.toFixed()}°</p>
-              </div>
-            </>
+            <div
+              key={uuid()}
+              className="flex flex-col items-center justify-center"
+            >
+              <p className="font-light text-sm">{item.title}</p>
+              <img
+                src={iconUrlFromCode(item.icon)}
+                className="my-2 w-12"
+                alt="Weather Icon"
+              />
+              <p className="font-medium">{item.temp.toFixed()}°</p>
+            </div>
           );
         })}
       </div>

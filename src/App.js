@@ -8,10 +8,9 @@ import getFormattedWeatherData from "./weatherService";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { v4 } from "uuid";
 
 function App() {
-  const [query, setQuery] = useState({ q: "tokyo" });
+  const [query, setQuery] = useState({ q: "Tokyo" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -56,8 +55,8 @@ function App() {
           <TimeAndLocation weather={weather} />
           <TemperatureAndDetails weather={weather} />
 
-          <Forecast title={"Hourly Forecast"} key={v4()} items={weather.hourly} />
-          <Forecast title={"Daily Forecast"} key={v4()} items={weather.daily} />
+          <Forecast title={"Hourly Forecast"} items={weather.hourly} />
+          <Forecast title={"Daily Forecast"} items={weather.daily} />
         </>
       )}
 

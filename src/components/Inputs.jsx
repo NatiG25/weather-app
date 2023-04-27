@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { FaLocationArrow } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 function Inputs({ setQuery, units, setUnits }) {
   const [city, setCity] = useState();
@@ -15,7 +16,9 @@ function Inputs({ setQuery, units, setUnits }) {
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {
+      toast.info("Fetching current user's location.")
       navigator.geolocation.getCurrentPosition((position) => {
+        toast.success("Location fetched!")
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
 
